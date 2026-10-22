@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - main
-      - feat/nik/TL-14
+      - origin/feat/nik/TL-14
 
 jobs:
   build:
