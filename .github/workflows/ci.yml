@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - main
+      - lesson-14
   pull_request:
     branches:
       - main
-      - origin/feat/nik/TL-14
 
 jobs:
   build:
