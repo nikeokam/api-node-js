@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - lesson-14
+      - homework-14
   pull_request:
     branches:
       - main
