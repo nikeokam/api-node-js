@@ -2,19 +2,11 @@
 import {test, expect} from '@playwright/test';
 let baseURL: string = 'http://localhost:3000/users';
 import { StatusCodes } from 'http-status-codes'
+import {cleanupUsers} from "../src/helpers/api-helper";
 
 test.describe('User management API', () => {
 
-    const cleanupUsers = async ( request: any): Promise<void> => {
-        const response = await request.get(`${baseURL}`);
-        const users: Array<any> = await response.json();
 
-        let i = 0;
-        for ( i; i < users.length; i++) {
-            await request.delete(`${baseURL}/${users[i].id}`)
-        }
-        console.log(`Removed: ${i} users`)
-    }
 
     test('find user: should return a user by ID', async ({ request }) => {
         const createUser = await request.post(`${baseURL}`);
