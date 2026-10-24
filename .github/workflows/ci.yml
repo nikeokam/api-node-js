@@ -9,8 +9,6 @@ on:
   pull_request:
     branches:
       - main
-      - lesson-14
-      - homework-14
 
 jobs:
   build:
