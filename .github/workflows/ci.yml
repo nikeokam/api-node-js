@@ -4,10 +4,11 @@ on:
   push:
     branches:
       - main
+      - lesson-14
+      - homework-14
   pull_request:
     branches:
       - main
-      - origin/feat/nik/TL-14
 
 jobs:
   build:
@@ -31,5 +32,8 @@ jobs:
             compose-file: ./docker-compose.yaml
             up-flags: -d
 
-      - name: Run tests
-        run: npx playwright test
+      - name: Run test for empty array scenario
+        run: npx playwright test tests/empty-array-scenario.spec.ts
+
+      - name: Run remaining tests
+        run: npx playwright test tests/user-controller.spec.ts
