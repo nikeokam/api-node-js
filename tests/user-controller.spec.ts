@@ -26,14 +26,12 @@ test.describe('User management API', () => {
     });
 
     test('find user: should return 404 if user not found', async ({ request }) => {
-        const createUser = await request.post(`${baseURL}`);
-        const newUser = await createUser.json();
-        console.log(newUser);
 
-        const searchUser = await request.get(`${baseURL}/${newUser.id+1}`);
+        let fakeID = 101;
+
+        const searchUser = await request.get(`${baseURL}/${fakeID}`);
         expect(searchUser.status()).toBe(StatusCodes.NOT_FOUND);
 
-        await cleanupUsers(request);
     });
 
     test('create user: should add a new user', async ({ request }) => {
@@ -59,13 +57,10 @@ test.describe('User management API', () => {
     });
 
     test('delete user: should return 404 if user not found', async ({ request }) => {
-        const createUser = await request.post(`${baseURL}`);
-        const newUser = await createUser.json();
+        let fakeID = 101;
 
-        const searchUser = await request.delete(`${baseURL}/${newUser.id+1}`);
+        const searchUser = await request.delete(`${baseURL}/${fakeID}`);
         expect(searchUser.status()).toBe(StatusCodes.NOT_FOUND);
-
-        await cleanupUsers(request);
     });
 
 });
